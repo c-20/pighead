@@ -8,17 +8,19 @@ There may be other ways that keylogging can happen but permanent admin rights ar
 in this case granted so it's an open window but at least you can see it. 
 
 With Interception installed and working, run pighead.exe.
-
 This will enable interception of the first device from which the mouse moves.
 Note that Interception sometimes doesn't detect movement from my laptop's
-internal trackpad, but it's a bit flaky on the connection, so. Anyway: a tofix?
+internal trackpad, but it's a bit flaky on the connection, so. Maybe a tofix.
 
-While pighead.exe is running you may notice certain key combinations stop working.
-For example, Alt+Tab. A future revision of pighead may fix this.
+Anyway, Win+R and run mspaint. Align the mouse in the centre of a canvas at least
+500px by 500px in size (screen pixels, not image pixels), select a pencil-like
+drawing tool and set the colour.
 
-Anyway, hopefully you can Win+R and run mspaint. Align the mouse in the centre
-of a canvas at least 500px by 500px in size (screen pixels, not image pixels),
-select a pencil-like drawing tool and set the colour.
+Once a drawing sequence starts, it cannot be cancelled. This will change later but
+requires polling of intercept_receive. Maybe a task for multi-threading ?
+
+To exit pighead.exe, press ESC. Regardless of device detection status, it should exit,
+unless a drawing sequence is in progress.
 
 Press Ctrl+P to start the pighead drawing sequence. Do not leave other important
 windows open, as the mouse is clicking madly and does not check that it is
@@ -29,11 +31,11 @@ tool and colour be known, and thus, a future revision may also add new hotkeys.
 
 The code to draw the pighead is:
 
-const char pighead[] = ":E160,1.5[@90%d30s2l12B5*j2r12B5*"
-                                 "@60%s1o15s2j1b5s3j1f5s4L3,2*L2,4*"
-                                "@120%s1o15s2j1b5s3j1f5s4L3,2*L2,4*"
-                                "@140%s1E10,1,0,2.25,135,2*j1"
-                                "@270%u30E35,1.5[@0%r30E25*@180%l30E25*]]";
+    const char pighead[] = ":E160,1.5[@90%d30s2l12B5*j2r12B5*"
+                                     "@60%s1o15s2j1b5s3j1f5s4L3,2*L2,4*"
+                                    "@120%s1o15s2j1b5s3j1f5s4L3,2*L2,4*"
+                                    "@140%s1E10,1,0,2.25,135,2*j1"
+                                    "@270%u30E35,1.5[@0%r30E25*@180%l30E25*]]";
 
 Example of program output can be found in pighead.png and pighead.log.
 
