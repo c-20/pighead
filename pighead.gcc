@@ -1,0 +1,17 @@
+name="$(basename $0 .gcc)"
+gcc="g++"
+src="${name}.cpp"
+out="${name}.exe"
+intercept="./intercept-x86"
+incparam="-I$intercept"
+libparam="-L$intercept"
+libsparam=-linterception
+utilsrc="$intercept/utils.c"
+sources="$src $utilsrc"
+echo "Compiling $out..."
+echo "  ($gcc $incparam $libparam -o $out"
+echo "     $sources $libsparam)"
+
+$gcc $incparam $libparam -o $out $sources $libsparam
+
+echo "...done"

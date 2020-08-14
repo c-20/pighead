@@ -1,0 +1,8 @@
+<pighead>
+  desktop: 1280x800
+  screen:  1280x800
+  <intercept>
+    { using mouse 0 }
+    { (E[(L).(L)][(B).(B)][(L).(L)][(E).[(E[(E)][(E)])]) }
+  </intercept>
+</pighead>
